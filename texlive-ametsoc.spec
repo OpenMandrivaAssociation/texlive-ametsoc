@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/ametsoc
+# catalog-date 2008-09-04 00:14:12 +0200
+# catalog-license lppl
+# catalog-version 3.0
 Name:		texlive-ametsoc
 Version:	3.0
 Release:	1
@@ -53,6 +59,7 @@ journal page layout draft for the author's personal use.
 %doc %{_texmfdistdir}/doc/latex/ametsoc/blank_template.pdf
 %doc %{_texmfdistdir}/doc/latex/ametsoc/blank_template.tex
 %doc %{_texmfdistdir}/doc/latex/ametsoc/figures/figure01.eps
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -63,3 +70,5 @@ journal page layout draft for the author's personal use.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar bibtex tex doc %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
