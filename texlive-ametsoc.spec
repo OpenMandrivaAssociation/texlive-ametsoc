@@ -17,8 +17,6 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
-Conflicts:	texlive-texmf <= 20110705-3
-Conflicts:	texlive-doc <= 20110705-3
 
 %description
 This package contains all the files necessary to write an
@@ -29,20 +27,12 @@ template for authors to use in writing their article. Also
 available is a separate style file used to format a two-column,
 journal page layout draft for the author's personal use.
 
-%pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -60,7 +50,6 @@ journal page layout draft for the author's personal use.
 %doc %{_texmfdistdir}/doc/latex/ametsoc/blank_template.pdf
 %doc %{_texmfdistdir}/doc/latex/ametsoc/blank_template.tex
 %doc %{_texmfdistdir}/doc/latex/ametsoc/figures/figure01.eps
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -71,5 +60,3 @@ journal page layout draft for the author's personal use.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar bibtex tex doc %{buildroot}%{_texmfdistdir}
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
