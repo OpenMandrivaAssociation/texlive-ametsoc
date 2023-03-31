@@ -1,6 +1,6 @@
 Name:		texlive-ametsoc
 Version:	4.3.2
-Release:	2
+Release:	3
 Summary:	Official American Meteorological Society Latex Template
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/ametsoc
